@@ -7,12 +7,6 @@ package trabalho.questao05;
 
 import trabalho.Tree;
 
-/**
- *
- * @author Thauanny
- */
-
-
 public class Questao05{
 	public static void main(String[] args) { 
         Tree tree =  new Tree();

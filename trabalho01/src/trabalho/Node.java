@@ -5,10 +5,7 @@
  */
 package trabalho;
 
-/**
- *
- * @author Thauanny
- */
+
 public class Node {
 
 	public int value;
