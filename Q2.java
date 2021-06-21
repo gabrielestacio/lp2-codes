@@ -1,6 +1,7 @@
 public class Q2{
 
 	public static double media(String[] seq, int tam){
+		System.out.println(tam);
 		if(tam == 0){
 			return 0;
 		}
