@@ -87,6 +87,54 @@ public class Tree {
 			}
 		}
 	}
+
+	public int height(){
+		return height(root);
+	}
 	
+	private int height(Node node){
+		if(node == null){
+			return 0;
+		}
+		return 1 + Math.max(height(node.left), height(node.right));
+	}
+
+	public int size(){
+		return size(root);
+	}
+
+	private int size(Node node){
+		if(node == null){
+			return 0;
+		}
+		return 1 + size(node.left) + size(node.right);
+	}
+	public String toString() {
+		return printFormated();
+	}
+	
+	public String printFormated() {
+		return printFormated(root, "", 1);
+	}
+
+	/*
+	Sequência de escape  Descrição
+		\n               Nova linha. Posiciona o cursor de tela no início da próxima linha
+		\t               Tabulação horizontal. Move o cursor de tela para a próxima parada de tabulação.
+		\r               Posiciona o cursor da tela no início da linha atual - não avança para a próxima linha. Qualquer saída de caracteres gerada depois de algum retorno já gerado é sobrescrito os caracteres anteriores gerados na linha atual.
+		\\               Barras invertidas. Utilizada para imprimir um caractere de barra invertida.
+		\”               Aspas duplas. Utilizada para imprimir um caractere de aspas duplas. Exemplo, System.out.println(“\”aspas\””); exibe “aspas”*/
+
+	private static String printFormated(Node root, String tab, int level) {
+		if (root != null) {
+
+			String strRight = printFormated(root.right, tab + "\t", level + 1);
+			String strAtual = (tab +  " " + Integer.toString(root.value)+  " (Level:" + Integer.toString(level) +  ") \n");
+			String srtLeft = printFormated(root.left, tab + "\t", level + 1);
+
+			return strRight + strAtual + srtLeft;
+		}
+		return "";
+	}
 	
 }
