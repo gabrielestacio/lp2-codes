@@ -1,5 +1,7 @@
 //Não tenho certeza se tá certa a recursão em cauda
 
+package LP2;
+
 public class Q4{
 	public static double total = 0;
 	

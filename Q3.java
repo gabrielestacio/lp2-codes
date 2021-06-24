@@ -1,3 +1,5 @@
+package LP2;
+
 public class Q3{
 
 	public double media(String[] seq, int tam){
