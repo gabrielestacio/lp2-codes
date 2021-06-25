@@ -1,3 +1,6 @@
+package trabalho01.src.questao07;
+import trabalho01.Tree;
+
 public class Q7{
 	public static void main(String[] args){
 		Tree tree = new Tree();

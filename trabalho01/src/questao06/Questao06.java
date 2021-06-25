@@ -4,9 +4,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package trabalho01.src.trabalho.questao06;
+package trabalho01.src.questao06;
 
-import trabalho01.src.trabalho.Tree;
+import trabalho01.Tree;
 
 public class Questao06{
 	public static void main(String[] args) { 

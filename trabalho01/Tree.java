@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package trabalho01.src.trabalho;
+package trabalho01;
 
 
 import java.util.LinkedList;
@@ -11,9 +11,12 @@ import java.util.LinkedList;
 public class Tree {
 
 	public Node root;
+	public String output;
+	public int count, sum;
 
-
-	public Tree(){
+	public Tree(){	
+		count = 0;
+		sum = 0;
 
         // matricula: 20201234567
 
@@ -111,6 +114,75 @@ public class Tree {
 	}
 	public String toString() {
 		return printFormated();
+	}
+
+
+	public void add(int valor){
+		Node no = new Node(valor);
+		if(root == null){
+			this.root = no;
+		}
+		else{
+			Node atual = this.root;
+			while(true){
+				if(no.value < atual.value){
+					if(atual.left != null){
+						atual = atual.left;
+					}
+					else{
+						atual.left = no;
+						break;
+					}
+				}
+				else{
+					if(atual.right != null){
+						atual = atual.right;
+					}
+					else{
+						atual.right = no;
+						break;
+					}
+				}
+			}
+		}
+	}
+	
+	//Questão 7
+	public void nodeCount(Node atual){
+		if(atual != null){
+			nodeCount(atual.left);
+			count += 1;
+			nodeCount(atual.right);
+		}
+	}
+	
+	public void treeSum(Node atual){
+		if(atual != null){
+			treeSum(atual.left);
+			sum += atual.value;
+			treeSum(atual.right);
+		}
+	}
+	
+	@Override
+	public boolean equals(Object obj){
+		
+		if(this == obj){
+			return true;
+		}
+		
+		if(obj == null || obj.getClass() != this.getClass()){
+			return false;
+		}
+		
+		Tree tree = (Tree)obj;
+		
+		this.nodeCount(root);
+		tree.nodeCount(tree.root);
+		this.treeSum(root);
+		tree.treeSum(tree.root);
+		
+		return ((this.sum == tree.sum) && (this.count == tree.count) && (this.root.value == tree.root.value));
 	}
 	
 	public String printFormated() {

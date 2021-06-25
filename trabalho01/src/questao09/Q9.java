@@ -1,4 +1,5 @@
-import trabalho01.src.trabalho.TreeN;
+package trabalho01.src.questao09;
+import trabalho01.TreeN;
 
 public class Q9 {
     public static void main(String[] args) {
