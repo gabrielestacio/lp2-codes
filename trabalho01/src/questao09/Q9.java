@@ -1,4 +1,5 @@
 package trabalho01.src.questao09;
+
 import trabalho01.TreeN;
 
 public class Q9 {
