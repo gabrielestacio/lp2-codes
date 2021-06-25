@@ -1,6 +1,6 @@
 import java.io.File;
 
-public class Questao08 {
+public class Q8 {
     public static void main(String[] args){
       
         File input = new File(args[0]);

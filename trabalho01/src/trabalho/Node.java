@@ -9,7 +9,6 @@ package trabalho01.src.trabalho;
 public class Node {
 
 	public int value;
-
 	public Node left;
 	public Node right;
 
