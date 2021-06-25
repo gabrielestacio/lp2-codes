@@ -11,9 +11,7 @@ import trabalho01.Tree;
 public class Questao06{
 	public static void main(String[] args) { 
         Tree tree =  new Tree();
-        
-        //tree.inOrder();
-        
+
        System.out.println(tree);
     }
             
