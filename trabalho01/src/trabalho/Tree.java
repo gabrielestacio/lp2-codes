@@ -128,11 +128,11 @@ public class Tree {
 	private static String printFormated(Node root, String tab, int level) {
 		if (root != null) {
 
-			String strRight = printFormated(root.right, tab + "\t", level + 1);
-			String strAtual = (tab +  " " + Integer.toString(root.value)+  " (Level:" + Integer.toString(level) +  ") \n");
-			String srtLeft = printFormated(root.left, tab + "\t", level + 1);
+			String nodeRight = printFormated(root.right, tab + "\t", level + 1);
+			String nodeAtual = (tab +  " " + Integer.toString(root.value)+  " (Level:" + Integer.toString(level) +  ") \n");
+			String nodeLeft = printFormated(root.left, tab + "\t", level + 1);
 
-			return strRight + strAtual + srtLeft;
+			return nodeRight + nodeAtual + nodeLeft;
 		}
 		return "";
 	}
