@@ -1,4 +1,4 @@
-package LP2;
+package trabalho01.src.questao02;
 
 public class Q2{
 

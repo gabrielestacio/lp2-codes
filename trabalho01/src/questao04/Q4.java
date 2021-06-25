@@ -1,6 +1,6 @@
 //Não tenho certeza se tá certa a recursão em cauda
 
-package LP2;
+package trabalho01.src.questao04;
 
 public class Q4{
 	public static double total = 0;
