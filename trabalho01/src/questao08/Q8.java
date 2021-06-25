@@ -2,6 +2,11 @@ package trabalho01.src.questao08;
 
 import java.io.File;
 
+/*
+ * rodar e buildar da origem das pastas
+ * 1. javac trabalho01\src\questao08\Q8.java   
+ * 2. java trabalho01.src.questao08.Q8 "caminho" "nomeArquivo.tipo" 
+*/
 public class Q8 {
     public static void main(String[] args){
       
