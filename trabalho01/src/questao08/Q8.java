@@ -2,6 +2,7 @@ package trabalho01.src.questao08;
 import java.io.File;
 
 /*
+rodar e buildar da origem das pastas
 java trabalho01.src.questao08.Q8 "caminho" "nomeArquivo.tipo" 
  */
 public class Q8 {
