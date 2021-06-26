@@ -4,6 +4,7 @@ Realização da lista de exercicio avaliativa da materia "Linguagem de programa�
 
 Trabalho feito por: 
 Gabriel Estácio
+
 Thauanny Ramos
 
 ## Estruturas das pastas
