@@ -1,14 +1,21 @@
-## Getting Started
+## Trabalho 01 - LP2 - IMD_UFRN
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Realização da lista de exercicio avaliativa da materia "Linguagem de programação 2
 
-## Folder Structure
+Trabalho feito por: 
+Gabriel Estácio
+Thauanny Ramos
 
-The workspace contains two folders by default, where:
+## Estruturas das pastas
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+Os pacotes das respectivas questões estão dentro da pasta "scr"
 
-## Dependency Management
+Caso role algum problema de execução da questao 8 aqui está um exemplo:
 
-The `JAVA DEPENDENCIES` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-pack/blob/master/release-notes/v0.9.0.md#work-with-jar-files-directly).
+´´
+ 1. javac trabalho01\src\questao08\Q8.java   
+ 2. java trabalho01.src.questao08.Q8 "caminho desejado do arquivo a ser comparado" "nomeArquivo.tipo" 
+
+``
+ é importante acrescentar o tipo do arquivo junto do nome como no exemplo para o algoritmo reconhecer como igual
+
