@@ -1,3 +1,15 @@
+/*
+	TRABALHO 01 - LINGUAGEM DE PROGRAMAÇÃO 2 - 2021.1
+	GABRIEL ESTÁCIO E THAUANNY RAMOS
+	_________________________________________________
+	
+	OBSERVAÇÕES DO ARQUIVO:
+		IMPLEMENTAÇÃO DA QUESTÃO 10
+	
+	FUNÇÕES IMPORTADAS E UTILIZADAS:
+		Tree.levelOrderStack(): Arquivo Tree.java, ln. 248
+*/
+
 package trabalho01.src.questao10;
 
 import trabalho01.Tree;
@@ -31,23 +43,23 @@ public class Q10{
 				Node T = P.pop();			   -> 1*n
 				R = T;						   -> 1*n
 				Node F = R.right;			   -> 1*n
-				if((F != null) && (F == P.peek())){
-					Node temp = P.pop();	   -> 1*n
-					P.add(R);				   -> 1*n
-					R = temp;				   -> 1*n
+				if((F != null) && (F == P.peek())){  -> 1*n
+					Node temp = P.pop();	   
+					P.add(R);				   
+					R = temp;				   
 				}
-				else{
-					System.out.println(R);	   -> 1*n
-					R = null;				   -> 1*n
+				else{						   -> 1*n
+					System.out.println(R);	   
+					R = null;				   
 				}
 			}
 		}
 	
-		= 1+1+1+1+(n+1)+(n+1)*n+n+n+n+n+n+n+n+n+n+n+n
-		= n²+13n+5
+		= 1+1+1+1+(n+1)+(n+1)*n+n+n+n+n+n+n+n+n
+		= n²+10n+5
 		
-		n²+13n+5 < 5n², c = 5 -> O(n²) é verdade;
-		n²+13n+5 < n², c = 1 -> Ω(n²) é verdade;
+		n²+10n+5 < 5n², c = 5 -> O(n²) é verdade;
+		n²+10n+5 < n², c = 1 -> Ω(n²) é verdade;
 		Portanto, a complexidade é Θ(n²).
 	
 	Percurso:

@@ -1,3 +1,16 @@
+/*
+	TRABALHO 01 - LINGUAGEM DE PROGRAMAÇÃO 2 - 2021.1
+	GABRIEL ESTÁCIO E THAUANNY RAMOS
+	_________________________________________________
+	
+	OBSERVAÇÕES DO ARQUIVO:
+		IMPLEMENTAÇÃO DA QUESTÃO 10
+
+	FUNÇÕES IMPORTADAS E UTILIZADAS:
+		Tree.add(int valor): Arquivo Tree.java, ln. 151
+		Tree.equals(Object obj): Arquivo Tree.java, ln. 232
+*/
+
 package trabalho01.src.questao07;
 
 import trabalho01.Tree;

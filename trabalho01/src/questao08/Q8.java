@@ -1,11 +1,20 @@
+/*
+	TRABALHO 01 - LINGUAGEM DE PROGRAMAÇÃO 2 - 2021.1
+	GABRIEL ESTÁCIO E THAUANNY RAMOS
+	_________________________________________________
+	
+	OBSERVAÇÕES DO ARQUIVO:
+		IMPLEMENTAÇÃO DA QUESTÃO 8
+*/
+
 package trabalho01.src.questao08;
 
 import java.io.File;
 
 /*
- * rodar e buildar da origem das pastas
- * 1. javac trabalho01\src\questao08\Q8.java   
- * 2. java trabalho01.src.questao08.Q8 "caminho" "nomeArquivo.tipo" 
+	Rodar e buildar da origem das pastas
+	1. javac trabalho01\src\questao08\Q8.java   
+	2. java trabalho01.src.questao08.Q8 "caminho" "nomeArquivo.tipo" 
 */
 public class Q8 {
     public static void main(String[] args){
