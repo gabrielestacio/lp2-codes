@@ -3,6 +3,7 @@
 Realização da lista de exercicio avaliativa da materia "Linguagem de programação 2
 
 Trabalho feito por: 
+
 Gabriel Estácio
 
 Thauanny Ramos
