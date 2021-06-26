@@ -9,18 +9,21 @@ public class Q7{
 		Tree tree = new Tree();
 		Tree arvore = new Tree();
 		
-		if(args.length != 0){ //Se algum valor foi passado por parâmetro para ser adicionado nas árvores...
-			//...adiciona os valores passados nas árvores
-			arvore.add(Integer.parseInt(args[0]));
-			tree.add(Integer.parseInt(args[1]));
+		if(args.length != 0 && args.length > 1){ //Se alguns valores foram passados por parâmetro para serem adicionados nas árvores...
+			//...adiciona metade dos valores passados numa árvore e a outra metade na outra
+			for(int i = 0; i < (args.length/2); i++)
+				arvore.add(Integer.parseInt(args[i]));				
+			for(int i = (args.length/2); i < args.length; i++)
+				tree.add(Integer.parseInt(args[i]));
 		}
-
+		else if(args.length != 0 && args.length == 1) //Se apenas um valor foi passado por parâmetro para ser adicionado na árvore...)
+			//...adiciona esse valor em numa das árvores
+			arvore.add(Integer.parseInt(args[0]));				
+		
 		//Se as árvores forem iguais, imprime TRUE, e, caso contrário, imprime FALSE
-		if(tree.equals(arvore)){
+		if(tree.equals(arvore))
 			System.out.println("TRUE");
-		}
-		else{
+		else
 			System.out.println("FALSE");
-		}
 	}
 }

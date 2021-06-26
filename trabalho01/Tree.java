@@ -12,13 +12,9 @@ import java.util.Stack;
 public class Tree {
 
 	public Node root; //Nó raiz
-	public int count, sum; //Count: conta a quantidade de nós da árvore; Sum: somatório do valor de todos os nós da árvore
 
 	//Construtor
 	public Tree(){	
-		count = 0;
-		sum = 0;
-
         //Questão 5
 		// matricula: 20201234567
 
@@ -184,46 +180,70 @@ public class Tree {
 		}
 	}
 	
-	//Percorre a árvore em ordem contando a quantidade de nós
-	public void nodeCount(Node atual){
-		if(atual != null){
-			nodeCount(atual.left);
-			count += 1;
-			nodeCount(atual.right);
+	//Percorre as árvores comparando as estruturas
+	public boolean compare(Node atual, Node t_atual){
+		//Se os valores armazenados nos nós forem iguais...
+		if(atual.value == t_atual.value){
+			//...se ambos os nós tem filho à esquerda...
+			if((atual.hasLeft() == true) && (t_atual.hasLeft() == true)){
+				//...se ambos os nós tem filhos à direita...
+				if((atual.hasRight() == true) && (t_atual.hasRight() == true)){
+					//...se os filhos da esquerda forem iguais...
+					if(compare(atual.left, t_atual.left) == true)
+						return compare(atual.right, t_atual.right); //...retorna se os filhos da direita são iguais ou não
+					//...se os filhos da esquerda não forem iguais...
+					else
+						return false;
+					
+					/*
+						Essas comparações são feitas para garantir que nenhum nó
+						seja deixado de lado, i.e., para que o algoritmo não percorra
+						somente um lado da árvore, principalmente quando partir do nó raiz
+					*/
+				}
+				//...se ambos os nós não tem filhos à direita...
+				else if((atual.hasRight() == false) && (t_atual.hasRight() == false))
+					return compare(atual.left, t_atual.left); //...retorna se os filhos da esquerda são iguais ou não					
+				//...se uma árvore tem filho à direita e a outra não...
+				else
+					return false;
+			}
+			//...se ambos os nós tem filhos à direita...
+			else if((atual.hasRight() == true) && (t_atual.hasRight() == true)){
+				//...se ambos os nós não tem filhos à esquerda...
+				if(atual.hasLeft() == t_atual.hasLeft())
+					return compare(atual.right, t_atual.right); //...retorna se os filhos da direita são iguais ou não
+				//...se somente um dos nós tem filho à esquerda...
+				else
+					return false;
+			}
+			//...se ambos os nós forem folhas...
+			else if((atual.isLeaf() == true) && (t_atual.isLeaf() == true))
+				return true;
+			//...se acontecer qualquer combinação que mostre que os nós fazem parte de estruturas diferentes, i.e., que as árvores são diferentes...
+			else
+				return false;
 		}
-	}
-	
-	//Percorre a árvore em ordem somando os valores dos nós
-	public void treeSum(Node atual){
-		if(atual != null){
-			treeSum(atual.left);
-			sum += atual.value;
-			treeSum(atual.right);
-		}
+		//...se os valores armazenado nos nós forem diferentes...
+		else
+			return false;
 	}
 	
 	//Método equals sobrescrito
 	@Override
 	public boolean equals(Object obj){
 		
-		if(this == obj){
+		if(this == obj)
 			return true;
-		}
 		
-		if(obj == null || obj.getClass() != this.getClass()){
+		if(obj == null || obj.getClass() != this.getClass())
 			return false;
-		}
 		
 		//Casting do objeto para o tipo árvore
 		Tree tree = (Tree)obj;
 		
-		this.nodeCount(root); //Conta os nós do objeto atual
-		tree.nodeCount(tree.root); //Conta os nós do objeto tree
-		this.treeSum(root); //Soma os valores do objeto atual
-		tree.treeSum(tree.root); //Soma os valores do objeto tree
-		
-		//Retorna se a soma dos valores das árvores e a quantidade de nós são iguais ou não
-		return ((this.sum == tree.sum) && (this.count == tree.count) && (this.root.value == tree.root.value));
+		//Retorna se a estrutura da árvore e valores dos nós é igual através do método compare
+		return compare(this.root, tree.root);
 	}
 	
 	public String printFormated() {
