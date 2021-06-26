@@ -1,4 +1,4 @@
-package LP2;
+package trabalho01.src.questao01;
 
 public class Q1{
 	//Método que calcula a média

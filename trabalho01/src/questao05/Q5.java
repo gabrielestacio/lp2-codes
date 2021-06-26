@@ -7,7 +7,7 @@ package trabalho01.src.questao05;
 
 import trabalho01.Tree;
 
-public class Questao05{
+public class Q5{
 	public static void main(String[] args) { 
         Tree tree =  new Tree();
         
