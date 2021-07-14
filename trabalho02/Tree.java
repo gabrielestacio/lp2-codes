@@ -1,4 +1,13 @@
-package p20211.trabalho2.src;
+/*
+	TRABALHO 02 - LINGUAGEM DE PROGRAMAÇÃO 2 - 2021.1
+	GABRIEL ESTÁCIO E THAUANNY RAMOS
+	_________________________________________________
+	
+	OBSERVAÇÕES DO ARQUIVO:
+		CLASSE QUE DEFINE O TIPO ARVORE
+ */
+
+package trabalho02;
 
 public interface Tree {
 

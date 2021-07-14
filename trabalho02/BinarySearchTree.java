@@ -1,4 +1,13 @@
-package p20211.trabalho2.src;
+/*
+	TRABALHO 02 - LINGUAGEM DE PROGRAMAÇÃO 2 - 2021.1
+	GABRIEL ESTÁCIO E THAUANNY RAMOS
+	_________________________________________________
+	
+	OBSERVAÇÕES DO ARQUIVO:
+		CLASSE QUE DEFINE A ÁRVORE DE BUSCA BINÁRIA
+ */
+
+package trabalho02;
 
 import java.util.LinkedList;
 
