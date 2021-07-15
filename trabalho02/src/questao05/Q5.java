@@ -10,24 +10,49 @@
 package trabalho02;
 
 import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Q5 extends BinarySearchTree{
-	private List<int> values = new ArrayList<int>(); //Lista de valores da árvore
+    private List<int> values = new ArrayList<int>();
 	
-	//Reescrita da função insert pública da classe BinarySearchTree. Só o que mudou é que o valor do nó raiz é armazenado na lista de valores
-	@Override
-	public boolean insert(int value) {
-		//Se a árvore ainda não tem raiz...
-		if (root == null) {
-			root = new Node(value); //...o nó raiz é criado com o valor passado...
-			values.add(value); //...e o seu valor é adicionado à lista de valores da árvore
-			return true;
+	//Método que percorre a árvore verificando se um valor já foi inserido
+	public boolean search(int value){
+		search(root, value); 
+	}
+	
+	//Método que percorre a árvore verificando se um valor já foi inserido
+	private boolean search(Node node, int value){
+		//Se o valor do nó for diferente do valor passado...
+		if(node.value != value){
+			//...se o nó passado tem filho à esquerda...
+			if(node.hasLeft()){
+				//...se o nó passado também tem filho à direita...
+				if(node.hasRight()){
+					//...se o valor não foi encontrado na sub-árvore esquerda do nó...
+					if(node.search(node.left, value))
+						return search(node.right, value); //...procurar na sub-árvore direita
+					//...se o valor foi encontrado na sub-árvore esquerda...
+					else
+						return false; //...o valor já existe na árvore
+				}
+				//...se o nó passado só tem filho à esquerda...
+				else{ 
+					return search(node.left, value); //...procurar só na sub-árvore esquerda
+				}
+			}
+			//...se o nó passado só tem filho à direita...
+			else if(node.hasRight()){
+				return search(node.right, value); //...procurar na sub-árvore direita
+			}
+			//...se o nó passado é folha...
+			else{
+				return true; //...o valor não foi encontrado na árvore
+			}
 		}
-		
-		//Se a árvore já tem raiz...
-		else{
-			return insert(root, value); //...o nó vai ser inserido como nó filho da raiz
-		}
+		//Se o valor do nó for igual ao do valor passado...
+		else
+			return false; //...o valor já existe na árvore
 	}
 	
 	//Reescrita da função insert privada da classe BinarySearchTree.
@@ -40,17 +65,15 @@ public class Q5 extends BinarySearchTree{
 				return insert(node.right, value); //...a comparação vai ser refeita, agora com o nó da direita
 			//...se não tiver filho na direita...
 			else{
-				//...é verificado se o valor já foi adicionado à lista de valores, i.e., já está presente na árvore
-				for(int i = 0; i < values.size(); i++){
-					if(values[i] == value){
-						return false; //caso já esteja
-					}
+				//...verifica se já existe um nó com esse valor...
+				if(search(node, value)){
+					node.right = new Node(value); //caso não exista, o nó com o tal valor é adicionado como filho da direita do nó passado...					
+					return true; //o nó foi adicionado
 				}
-				node.right = new Node(value); //caso não esteja, o nó com o tal valor é adicionado como filho da direita do nó passado...
-				values.add(value); //...e o seu valor é adicionado à lista de valores da árvore
+				else
+					return false;
 			}	
-		}
-		
+		}		
 		//Se o valor passado for menor que o valor do nó...
 		else if(value < node.value){
 			//...se o nó já tiver filho na esquerda...
@@ -58,17 +81,15 @@ public class Q5 extends BinarySearchTree{
 				return insert(node.left, value); //...a comparação vai ser refeita, agora com o nó da esquerda
 			//...se não tiver filho na esquerda...
 			else{
-				//...é verificado se o valor já foi adicionado à lista de valores, i.e., já está presente na árvore
-				for(int j = 0; j < values.size(); j++){
-					if(values[j] == value){
-						return false; //caso já esteja
-					}
+				//...verifica se já existe um nó com esse valor...
+				if(search(node, value)){
+					node.left = new Node(value); //caso não exista, o nó com o tal valor é adicionado como filho da esquerda do nó passado...
+					return true; //o nó foi adicionado
 				}
-				node.left = new Node(value); //caso não esteja, o nó com o tal valor é adicionado como filho da esquerda do nó passado...
-				values.add(value); //...e o seu valor é adicionado à lista de valores da árvore
+				else
+					return false;
 			}
 		}
-		
 		//Se o valor passado for igual ao valor do nó...
 		else
 			return false; //...valor já existe na árvore
@@ -77,34 +98,23 @@ public class Q5 extends BinarySearchTree{
 	}
 	
 	//Método que fará a ordenação dos valores da árvore
-	public int[] bubbleSort(){
-		int valores[] = new int[values.size()];
-		values.toArray(valores); //Conversão de ArrayList para Array
-        return bubbleSort(valores);
+	public int[] order(){
+		order(root);
+		
+		//Conversão de ArrayList para um array simples
+		int[] valores = new int[values.size()]; 
+		values.toArray(valores);
+		
+		return valores; //Retorna o array ordenado
     }
 
 	//Método que fará a ordenação dos valores da árvore
-    private int[] bubbleSort(int values[]){
-        boolean order = true; //Verifica se houve uma ordenação no vetor, i.e., uma troca de posição
-        int temp; //Variável auxiliar que vai armazenar o valor que irá mudar de posição
-		
-		//Enquando trocas forem feitas...
-        while(order){
-            order = false;
-            
-			//...percorra o vetor verificando se há a possibilidade de troca (o tamanho precisa ser -1, pois se não haverá um "estouro" do vetor, comparando o último elemento com algo que está fora do vetor)
-			for (int i = 0; i < values.length - 1; i++){
-				//Se o valor atual for maior que o próximo...
-                if (values[i] > values[i + 1]){
-                    temp = values[i]; //...temp vai receber o valor que será trocado...
-                    values[i] = values[i + 1]; //...o valor menor passa uma posição para "trás"...
-                    values[i + 1] = temp; //...o valor maior passa uma posição para "frente"...
-                    
-					order = true; //...uma troca foi feita
-                }
-            }
-        }
-		
-		return values; //Retorna os valores num vetor ordenado
+    private void order(Node node){
+		//Percorre a árvore no trajeto in-order, que adicionará os valores no ArrrayList já ordenados. Esta é uma característica do in-order das árvores binárias de busca 
+		if(node != null){
+			order(node.left);
+			values.add(node.value);
+			order(node.right);
+		}
     }
 }
