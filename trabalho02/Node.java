@@ -4,7 +4,7 @@
 	_________________________________________________
 	
 	OBSERVAÇÕES DO ARQUIVO:
-		CLASSE QUE DEFINE O TIPO NODE, QUE SERÁ USADO, PRINCIPALMENTE, NA CLASSE TREE
+		CLASSE FORNECIDA PELO PROFESSOR QUE DEFINE O TIPO NODE
  */
 
 package trabalho02;

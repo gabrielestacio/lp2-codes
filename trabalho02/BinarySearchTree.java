@@ -4,7 +4,7 @@
 	_________________________________________________
 	
 	OBSERVAÇÕES DO ARQUIVO:
-		CLASSE QUE DEFINE A ÁRVORE DE BUSCA BINÁRIA
+		CLASSE FORNECIDA PELO PROFESSOR QUE DEFINE A ÁRVORE DE BUSCA BINÁRIA
  */
 
 package trabalho02;

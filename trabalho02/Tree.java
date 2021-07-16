@@ -4,7 +4,7 @@
 	_________________________________________________
 	
 	OBSERVAÇÕES DO ARQUIVO:
-		CLASSE QUE DEFINE O TIPO ARVORE
+		CLASSE FORNECIDA PELO PROFESSOR QUE DEFINE O TIPO ARVORE
  */
 
 package trabalho02;
