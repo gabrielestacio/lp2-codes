@@ -258,4 +258,62 @@ public class BinarySearchTree implements Tree {
 			return false;
 		}
 	}
+
+
+
+	@Override
+	public void getSucessor(int value) {
+		getSucessor(root, value);
+	}
+
+	private void getSucessor(Node node, int value) {
+		if(node.value == value){ // verificao para saber se o node.value é o valor q eu quero achar um sucessor
+			if (node.right != null) { // procura na arvore a direita pois é sucessor
+				Node child = node.right; // recebe o ramo da direita se nao for nulo	
+				while(child.left != null){ // verifica a a arvore esquerda (do ramo da direita) procurando o menor dos maiores
+					child = child.left;	
+				}
+				System.out.println(child);
+			}else if(node.right == null){ // retorna o msm caso nao exista
+				System.out.println(node);
+			}
+		}else{
+			if(node.value < value){ // se o node.valur for menor do que o numero que quero, entao o valor estará a direita
+				getSucessor(node.right, value);
+			}else if(node.value > value){ // se o node.valur for maior do que o numero que quero, entao o valor estará a esquerda
+			getSucessor(node.left, value);
+			}
+		}
+	}
+
+	@Override
+	public void getAntecessor(int value) {
+		getAntecessor(root, value);
+	}
+
+	private void getAntecessor(Node node, int value) {
+		if(node.value == value){ // verificao para saber se o node.value é o valor q eu quero achar um antecessor
+			if (node.left != null) { // procura na arvore a esquerda pois é antecessor
+				Node child = node.left;	// recebe o ramo da esquerda se nao for nulo	
+				while(child.right != null){ // verifica a a arvore direita (do ramo da esquerda) procurando o maior dos menores
+					child = child.right;	
+				}
+				System.out.println(child);
+			}else if(node.left == null){ // retorna o msm caso nao exista
+				System.out.println(node);
+			}
+		}else{
+			if(node.value < value){ // se o node.valur for menor do que o numero que quero, entao o valor estará a direita
+				getAntecessor(node.right, value);
+			}else if(node.value > value){ // se o node.valur for maior do que o numero que quero, entao o valor estará a esquerda
+				getAntecessor(node.left, value);
+			}
+		}
+	}
+
+	@Override
+	public boolean search(int y) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

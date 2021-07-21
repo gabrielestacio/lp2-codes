@@ -16,4 +16,7 @@ public interface Tree {
 	public boolean contains(int x);
 	public int size();
 	public int height();
+	public void getSucessor(int y);
+	public void getAntecessor(int y);
+	public boolean search(int y);
 }
