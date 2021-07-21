@@ -1,10 +1,10 @@
 /*
 	TRABALHO 02 - LINGUAGEM DE PROGRAMAÇÃO 2 - 2021.1
-	GABRIEL ESTÁCIO E THAUANNY RAMOS
+	GABRIEL ESTACIO E THAUANNY RAMOS
 	_________________________________________________
 	
 	OBSERVAÇÕES DO ARQUIVO:
-		CLASSE FORNECIDA PELO PROFESSOR QUE DEFINE A ÁRVORE DE BUSCA BINÁRIA
+		CLASSE FORNECIDA PELO PROFESSOR QUE DEFINE A ARVORE DE BUSCA BINARIA
  */
 
 package trabalho02;
@@ -14,6 +14,10 @@ import java.util.LinkedList;
 public class BinarySearchTree implements Tree {
 
 	private Node root;
+	
+	protected Node getRoot(){
+		return root;
+	}
 	
 	protected void setRoot(Node root) {
 		this.root = root;

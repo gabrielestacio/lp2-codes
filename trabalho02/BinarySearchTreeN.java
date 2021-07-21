@@ -1,10 +1,10 @@
 /*
 	TRABALHO 02 - LINGUAGEM DE PROGRAMAÇÃO 2 - 2021.1
-	GABRIEL ESTÁCIO E THAUANNY RAMOS
+	GABRIEL ESTACIO E THAUANNY RAMOS
 	_________________________________________________
 	
 	OBSERVAÇÕES DO ARQUIVO:
-		CLASSE QUE DEFINE A NOVA ÁRVORE DE BUSCA BINÁRIA PARA A QUESTÃO 2
+		CLASSE QUE DEFINE A NOVA ARVORE DE BUSCA BINARIA PARA A QUESTÃO 2
  */
 
 package trabalho02;
@@ -13,9 +13,10 @@ import java.util.LinkedList;
 
 public class BinarySearchTreeN extends BinarySearchTree{
 	private int count;
-	private Node last;
+	private Node last = null;
+	private Node root = getRoot();
 	
-	@Override
+	//@Override
 	private boolean insert(Node node, int value) {
 		if(value > node.value){
 			if(node.hasRight())
@@ -41,92 +42,67 @@ public class BinarySearchTreeN extends BinarySearchTree{
 	
 	@Override
 	public boolean remove(int value) {
-		found
-		root = remove(root, value);
+		runThrough(value);
+		
+		if(last != null){
+			remove(last, value);
+		}
+		else{
+			root = remove(root, value);
+		}
 		return true;
 	}
 
-	@Override
+	//@Override
 	private Node remove(Node node, int value) {
-		runThrough(value);
-		
-		if(count > 1){
-			Node found = runThrough
-		}
-		else{
-			if (node == null) {
+		if (node == null) {
+			return null;
+		} else if (node.value == value) {
+			if (node.isLeaf()) {
 				return null;
-			} else if (node.value == value) {
-				if (node.isLeaf()) {
-					return null;
-				} else if (node.hasLeft() && !node.hasRight()) {
-					return node.left;
-				} else if (node.hasRight() && !node.hasLeft()) {
-					return node.right;
+			} else if (node.hasLeft() && !node.hasRight()) {
+				return node.left;
+			} else if (node.hasRight() && !node.hasLeft()) {
+				return node.right;
+			} else {
+				Node child = node.right;
+				if (!child.hasLeft()) {
+					child.left = node.left;
+					return child;
 				} else {
-					Node child = node.right;
-					if (!child.hasLeft()) {
-						child.left = node.left;
-						return child;
-					} else {
-						Node successor = removeSuccessor(child);
-						successor.left = node.left;
-						successor.right = node.right;
-						return successor;
-					}
+					Node successor = removeSuccessor(child);
+					successor.left = node.left;
+					successor.right = node.right;
+					return successor;
 				}
-			} else if (value > node.value) {
-				node.right = remove(node.right, value);
-				return node;
-			} else if (value < node.value) {
-				node.left = remove(node.left, value);
-				return node;
 			}
+		} else if (value > node.value) {
+			node.right = remove(node.right, value);
+			return node;
+		} else if (value < node.value) {
+			node.left = remove(node.left, value);
 			return node;
 		}
+		return node;
 	}
 	
 	public void runThrough(int value){
-		int tam = size()
-		runThrough(root, value, tam);
+		runThrough(root, value);
 	}
 	
-	private void runThrough(Node node, int value, int tam){
-		while(tam > 0){
-			if((node.hasLeft()) && (!node.hasRight())){
-				if(value == node.value)
-					last = node;
-				
-				node = node.left;
-				tam--;
-			}
-			else if((node.hasLeft()) && (!node.hasRight())){
-				
-			}
-			else if((node.hasLeft()) && (!node.hasRight())){
-				
-			}
-			else{
-				
-			}
+	private void runThrough(Node node, int value){
+		if(value == node.value){
+			last = node;
 		}
 		
-		if(tam == 0){
-			
+		if(node.hasLeft()){
+			runThrough(node.left, value);
+			if(node.hasRight())
+				runThrough(node.right, value);
 		}
-		else{
-			
-			if(value == node.value)
-				last = node;
-			
-			if(node.hasLeft()){
-				runThrough(node.left, value, tam - 1);
-				if(node.hasRight())
-					runThrough(node.right, value, tam - 1);
-			}
-			else if(root.hasRight())
-				runThrough(node.right, value, tam - 1);
-		}			
+		else if(node.hasRight()){
+			runThrough(node.right, value);
+		}
 	}
 
 	//Não vi nada que barre a presença de nós repetidos...

@@ -1,6 +1,6 @@
 /*
 	TRABALHO 02 - LINGUAGEM DE PROGRAMAÇÃO 2 - 2021.1
-	GABRIEL ESTÁCIO E THAUANNY RAMOS
+	GABRIEL ESTACIO E THAUANNY RAMOS
 	_________________________________________________
 	
 	OBSERVAÇÕES DO ARQUIVO:
@@ -14,25 +14,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NewStructure extends BinarySearchTree{
-    private List<int> values = new ArrayList<int>();
+    private List<Integer> values = new ArrayList<Integer>();
 	
 	//Construtor
 	public NewStructure(int[] values){
-		if(values[0] != null){
-			this.setRoot(values[0]);
-			for(int i = 1; i < values.size(); i++){
-				this.insert(values[i]);
+		if(values.length != 0){
+			Node root = new Node(values[0]);
+			this.setRoot(root);
+			for(int i = 1; i < values.length; i++){
+				insert(values[i]);
 			}
 		}	
 	}
 	
 	//Método que fará a ordenação dos valores da árvore
 	public int[] order(){
-		order(root);
+		order(getRoot());
 		
 		//Conversão de ArrayList para um array simples
-		int[] valores = new int[values.size()]; 
-		values.toArray(valores);
+		Object[] objects = values.toArray(); 
+		int[] valores = new int[objects.length];
+		
+		for(int i = 0; i < objects.length; i++){
+			valores[i] = (int)objects[i];
+		}
 		
 		return valores; //Retorna o array ordenado
     }
