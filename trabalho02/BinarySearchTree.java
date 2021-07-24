@@ -9,6 +9,7 @@
 
 package trabalho02;
 
+import java.text.BreakIterator;
 import java.util.LinkedList;
 
 public class BinarySearchTree implements Tree {
@@ -37,13 +38,13 @@ public class BinarySearchTree implements Tree {
 			if (node.hasRight()) {
 				return insert(node.right, value);
 			} else {
-				node.right = new Node(value);
+				node.right = new Node(value); // adicionar o parent
 			}
 		} else if (value < node.value) {
 			if (node.hasLeft()) {
 				return insert(node.left, value);
 			} else {
-				node.left = new Node(value);
+				node.left = new Node(value); // adicionar o parent
 			}
 		} else {
 			return false; // contains value
@@ -265,8 +266,9 @@ public class BinarySearchTree implements Tree {
 	public void getSucessor(int value) {
 		getSucessor(root, value);
 	}
-
+	Node nodeParent = null;
 	private void getSucessor(Node node, int value) {
+		
 		if(node.value == value){ // verificao para saber se o node.value é o valor q eu quero achar um sucessor
 			if (node.right != null) { // procura na arvore a direita pois é sucessor
 				Node child = node.right; // recebe o ramo da direita se nao for nulo	
@@ -275,9 +277,16 @@ public class BinarySearchTree implements Tree {
 				}
 				System.out.println(child);
 			}else if(node.right == null){ // retorna o msm caso nao exista
-				System.out.println(node);
+				if(node.value < nodeParent.value){
+					System.out.println(nodeParent);
+					
+				}else{
+					System.out.println(node); 
+				}
+			
 			}
 		}else{
+			nodeParent = node;
 			if(node.value < value){ // se o node.valur for menor do que o numero que quero, entao o valor estará a direita
 				getSucessor(node.right, value);
 			}else if(node.value > value){ // se o node.valur for maior do que o numero que quero, entao o valor estará a esquerda

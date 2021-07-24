@@ -17,7 +17,7 @@ public class Q4{
        teste.insert(2);
        System.out.println(teste);
        System.out.println("Sucessor");
-      teste.getSucessor(1);
+      teste.getSucessor(19);
       System.out.println("Antecessor");
       teste.getAntecessor(8);
       
