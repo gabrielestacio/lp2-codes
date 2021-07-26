@@ -1,3 +1,12 @@
+/*
+	TRABALHO 02 - LINGUAGEM DE PROGRAMAÇÃO 2 - 2021.1
+	GABRIEL ESTACIO E THAUANNY RAMOS
+	_________________________________________________
+	
+	OBSERVAÇÕES DO ARQUIVO:
+		IMPLEMENTAÇÃO DA QUESTÃO 01
+ */
+
 package trabalho02.src.questao01;
 
 import trabalho02.BinaryComplete;

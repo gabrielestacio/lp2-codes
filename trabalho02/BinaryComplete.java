@@ -1,3 +1,12 @@
+/*
+	TRABALHO 02 - LINGUAGEM DE PROGRAMAÇÃO 2 - 2021.1
+	GABRIEL ESTACIO E THAUANNY RAMOS
+	_________________________________________________
+	
+	OBSERVAÇÕES DO ARQUIVO:
+		CLASSE QUE DEFINE O TIPO ARVORE BINARIA COMPLETA, UTILIZADO NA QUESTÃO 1.
+ */
+
 package trabalho02;
 
 import java.util.LinkedList;
