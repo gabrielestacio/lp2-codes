@@ -4,7 +4,7 @@
 	_________________________________________________
 	
 	OBSERVAÇÕES DO ARQUIVO:
-		CLASSE QUE DEFINE O TIPO NEWSTRUCTURE.
+		CLASSE QUE DEFINE O TIPO NEWSTRUCTURE, UTILIZADO NA QUESTÃO 5.
  */
 
 package trabalho02;
