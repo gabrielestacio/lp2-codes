@@ -9,13 +9,12 @@
 
 package trabalho02;
 
-import java.text.BreakIterator;
+
 import java.util.LinkedList;
 
 public class BinarySearchTree implements Tree {
 
 	private Node root;
-	private int count;
 	private Node repeat = null;
 	
 	protected Node getRoot(){

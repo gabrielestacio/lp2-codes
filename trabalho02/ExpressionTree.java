@@ -1,9 +1,15 @@
+/*
+	TRABALHO 02 - LINGUAGEM DE PROGRAMAÇÃO 2 - 2021.1
+	GABRIEL ESTACIO E THAUANNY RAMOS
+	_________________________________________________
+	
+	OBSERVAÇÕES DO ARQUIVO:
+		CLASSE QUE DEFINE A CLASSE EXPRESSIONTREE, UTILIZADA NA QUESTÃO 6.
+ */
+
 package trabalho02;
 
-
-
 /*
-
 x * (((y+z) + (y*z)) * (z+y))
 
 	   * 1
@@ -11,7 +17,6 @@ x * (((y+z) + (y*z)) * (z+y))
 	   4+     +5
     6+   *7    8z 9y 
    10y 11z  12y 13z
-
 */
 
 public class ExpressionTree implements Tree {
