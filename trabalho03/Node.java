@@ -1,9 +1,12 @@
-
-package trabalho02;
+import java.util.Random;
 
 public class Node {
 
 	protected int value;
+	
+	protected Node dad;
+	protected int cost;
+	protected double prob;
 
 	public Node left;
 	public Node middle_left;
@@ -11,7 +14,19 @@ public class Node {
 	public Node right;
 
 	public Node(int value) {
+		Random generator = new Random();
 		this.value = value;
+		this.dad = null;
+		this.cost = generator.nextInt(10) + 1;
+		this.prob = generator.nextDouble()/100;
+	}
+	
+	public Node(int value, Node dad){
+		Random generator = new Random();
+		this.value = value;
+		this.dad = dad;
+		this.cost = generator.nextInt(10) + 1;
+		this.prob = generator.nextDouble()/100;
 	}
 
 	public boolean isLeaf() {

@@ -127,5 +127,19 @@ public class QuadTree implements Element{
 					no caso de ser apenas raiz, passo para a esquerda para que o nível abaixo seja verificado a partir da esquerda, para obedecer a ordem de inserção
 				*/
 		}		
-	}	
+	}
+	
+	//Questão b)
+	
+	public void randomize(){
+		randomize();
+	}
+	
+	private void randomize(){
+		Random generator = new Random();
+		
+		for(int i = 0; i < 1500; i++){
+			insert(generator.nextInt());
+		}
+	}
 }
