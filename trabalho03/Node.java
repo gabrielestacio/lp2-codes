@@ -1,12 +1,13 @@
 import java.util.Random;
 
-public class Node {
+public class Node implements Element{
 
 	protected int value;
 	
 	protected Node dad;
 	protected int cost;
 	protected double prob;
+	protected Random generator = new Random();
 
 	public Node left;
 	public Node middle_left;
@@ -14,19 +15,30 @@ public class Node {
 	public Node right;
 
 	public Node(int value) {
-		Random generator = new Random();
 		this.value = value;
 		this.dad = null;
-		this.cost = generator.nextInt(10) + 1;
-		this.prob = generator.nextDouble()/100;
+		cost();
+		this.prob = generator.nextDouble();
 	}
 	
 	public Node(int value, Node dad){
-		Random generator = new Random();
 		this.value = value;
 		this.dad = dad;
+		cost();
+		this.prob = generator.nextDouble();
+	}
+	
+	@Override
+	public int cost(){
 		this.cost = generator.nextInt(10) + 1;
-		this.prob = generator.nextDouble()/100;
+	}
+	
+	@Override
+	public boolean isObjective(){
+		if(this.prob <= 0.01)
+			return true;
+		else
+			return false;
 	}
 
 	public boolean isLeaf() {

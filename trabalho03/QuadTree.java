@@ -4,6 +4,11 @@ import java.util.Random;
 public class QuadTree implements Element{
 	private Node root;
 	private int answer;
+	List<int> costs = new ArrayList<int>();
+	List<Node> objectives = new ArrayList<Node>();
+	
+	public QuadTree(){
+	}
 	
 	protected Node getRoot(){
 		return root;
@@ -141,5 +146,45 @@ public class QuadTree implements Element{
 		for(int i = 0; i < 1500; i++){
 			insert(generator.nextInt());
 		}
+	}
+	
+	//Questão c)
+	
+	public void preOrder(){
+		preOrder(root);
+	}
+	
+	private void preOrder(Node node){
+		if(node != null){
+			cost += node.cost;
+			if(node.isObjective()){
+				costs.add(cost);
+				objectives.add(node);
+			}
+			else{
+				preOrder(node.left);
+				preOrder(node.middle_left);
+				preOrder(node.middle_right);
+				preOrder(node.right);
+			}	
+		}
+	}
+	
+	public Node lessCost(){
+		Node obj;
+		int cheaper;
+		for(int i = 0; i < objectives.length; i++){
+			if(i == 0){
+				obj = objectives.get(0);
+				cheaper = costs.get(0);
+			}
+			else{
+				if(costs.get(i) < cheaper){
+					obj = objectives.get(i);
+					cheaper = costs.get(i);
+				}
+			}
+		}
+		return obj;
 	}
 }
