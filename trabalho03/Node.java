@@ -2,8 +2,6 @@ import java.util.Random;
 
 public class Node implements Element{
 
-	protected int value;
-	
 	protected Node dad;
 	protected int cost;
 	protected double prob;
@@ -14,17 +12,27 @@ public class Node implements Element{
 	public Node middle_right;
 	public Node right;
 
-	public Node(int value) {
-		this.value = value;
+	public Node(){
 		this.dad = null;
 		this.cost = cost();
 		this.prob = generator.nextDouble();
 	}
 	
-	public Node(int value, Node dad){
-		this.value = value;
+	public Node(Node dad){	
 		this.dad = dad;
-		cost();
+		this.cost = cost();
+		this.prob = generator.nextDouble();
+	}
+	
+	public Node(int cost){
+		this.dad = null;
+		this.cost = cost;
+		this.prob = generator.nextDouble();
+	}
+	
+	public Node(int cost, Node dad){
+		this.dad = dad;
+		this.cost = cost;
 		this.prob = generator.nextDouble();
 	}
 	
@@ -45,7 +53,7 @@ public class Node implements Element{
 	public int compareTo(Element obj){
 		Node temp = (Node)obj;
 		
-		return value - temp.value;
+		return cost - temp.cost;
 	}
 
 	public boolean isLeaf() {
@@ -89,6 +97,6 @@ public class Node implements Element{
 	}
 	
 	public String toString() {
-		return Integer.toString(value);
+		return Integer.toString(cost);
 	}
 }
