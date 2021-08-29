@@ -130,9 +130,6 @@ public class QuadTree{
 	
 	public Node way(){
 		preOrder(root);
-		for(int i = 0; i < costs.size(); i++){
-			//System.out.println(costs.get(i) + " - " + objectives.get(i));
-		}
 		return lessCost();
 	}
 	
