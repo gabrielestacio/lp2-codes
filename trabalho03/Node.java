@@ -17,7 +17,7 @@ public class Node implements Element{
 	public Node(int value) {
 		this.value = value;
 		this.dad = null;
-		cost();
+		this.cost = cost();
 		this.prob = generator.nextDouble();
 	}
 	
@@ -30,7 +30,7 @@ public class Node implements Element{
 	
 	@Override
 	public int cost(){
-		this.cost = generator.nextInt(10) + 1;
+		return generator.nextInt(10) + 1;
 	}
 	
 	@Override
@@ -39,6 +39,13 @@ public class Node implements Element{
 			return true;
 		else
 			return false;
+	}
+	
+	@Override
+	public int compareTo(Element obj){
+		Node temp = (Node)obj;
+		
+		return value - temp.value;
 	}
 
 	public boolean isLeaf() {
