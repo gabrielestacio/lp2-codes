@@ -1,3 +1,12 @@
+/*
+	TRABALHO 03 - LINGUAGEM DE PROGRAMAÇÃO 2 - 2021.1
+	GABRIEL ESTACIO E THAUANNY RAMOS
+	_________________________________________________
+	
+	OBSERVAÇÕES DO ARQUIVO:
+		IMPLEMENTAÇÃO DA QUESTÃO 05
+ */
+
 package trabalho03.src.Q5;
 
 import trabalho03.Node;
@@ -6,17 +15,13 @@ import trabalho03.QuadTree;
 public class Q5{
 	public static void main(String[] args){
 		QuadTree tree = new QuadTree();
-
-
 		
-		//tree = qA(tree, args);
+		tree = qA(tree, args);
 		tree = qB(tree);
-		//qC(tree);
-		//qD(tree);
+		qC(tree);
+		qD(tree);
 		tree.inOrder();
 		qE(tree);
-
-
 	}
 	
 	public static QuadTree qA(QuadTree tree, String[] args){

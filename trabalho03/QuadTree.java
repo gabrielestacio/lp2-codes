@@ -1,3 +1,12 @@
+/*
+	TRABALHO 03 - LINGUAGEM DE PROGRAMAÇÃO 2 - 2021.1
+	GABRIEL ESTACIO E THAUANNY RAMOS
+	_________________________________________________
+	
+	OBSERVAÇÕES DO ARQUIVO:
+		IMPLEMENTAÇÃO DO TIPO ARVORE QUATERNARIA
+ */
+
 package trabalho03;
 
 import java.util.List;
@@ -6,17 +15,13 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Random;
 
-
 public class QuadTree{
 	private Node root;
 	private int answer;
 	private int cost;
 	
-
-	Comparator<Element> cmp = new CompareByCost();
-
-
-	PriorityQueue<Element> heap = new PriorityQueue<>(cmp);
+	private Comparator<Element> cmp = new CompareByCost();
+	private PriorityQueue<Element> heap = new PriorityQueue<>(cmp);
 	
 	private List<Integer> costs = new ArrayList<Integer>();
 	private List<Node> objectives = new ArrayList<Node>();
@@ -129,6 +134,7 @@ public class QuadTree{
 	
 	//Questão b)
 	
+	//Insere os 1500 elementos randômicos
 	public void randomize(){
 		Random generator = new Random();
 		
@@ -136,26 +142,6 @@ public class QuadTree{
 			insert(generator.nextInt(5000));
 		}
 	}
-
-		//Percurso em ordem
-		public void inOrder() {
-			inOrder(root);
-		}
-	
-		//Percurso em ordem
-		private void inOrder(Node root) {
-			if (root != null) {
-
-				preOrder(root.left);
-				preOrder(root.middle_left);
-				System.out.print(root + " ");
-				preOrder(root.middle_right);
-				preOrder(root.right);
-				inOrder(root.left);
-				
-			
-			}
-		}
 	
 	//Questão c)
 	
@@ -164,14 +150,15 @@ public class QuadTree{
 		return lessCost();
 	}
 	
+	//Realiza o percurso em pré-ordem
 	private void preOrder(Node node){
-		if(root != null){	
-			if(node != null){
-				cost += node.cost;
-				if(node.isObjective()){
-					costs.add(cost);
-					cost = 0;
-					objectives.add(node);
+		if(root != null){ //se a árvore não for vazia	
+			if(node != null){ //se o nó não for nulo
+				cost += node.cost; //acumulador que acumula o custo até achar um objetivo
+				if(node.isObjective()){ //se o nó for objetivo
+					costs.add(cost); //adiciona a soma do custo à lista de custos
+					cost = 0; //zera o acumulador de custos
+					objectives.add(node); //adiciona o nó à lista de objetivos
 				}
 				
 				preOrder(node.left);
@@ -181,11 +168,13 @@ public class QuadTree{
 			}
 		}
 	}
-	
+
+	//Determina o objetivo com menor acumulo de custos no trajeto
 	private Node lessCost(){
 		int cheaper = costs.get(0);
 		Node obj = objectives.get(0);
 		
+		//percorre as listas de objetivos e custos em busca do objetivo de menor custo
 		for(int i = 1; i < objectives.size(); i++){
 			if(costs.get(i) < cheaper){
 				obj = objectives.get(i);
@@ -197,6 +186,7 @@ public class QuadTree{
 	
 	//Questão d)
 	
+	//Realiza o percurso da árvore por níveis até encontrar o primeiro objetivo
 	public void levelRun(){
 		System.out.print("Trajeto até o primeiro objetivo: ");
 		levelRun(root);
@@ -205,24 +195,44 @@ public class QuadTree{
 	
 	private void levelRun(Node node){
 		System.out.print(node + " ");
-		if(!node.isObjective() || node != null){
-			if(node.dad == null){
-				levelRun(node.left);
+		if(!node.isObjective() || node != null){ //se o nó não é vazio e nem é objetivo
+			if(node.dad == null){ //se o nó não tem pai, isto é, é raiz
+				levelRun(node.left); //desce para o próximo nível pela esquerda
 			}
-			else{
-				if(node == node.dad.left)
+			else{ //se tiver pai
+				if(node == node.dad.left) //se for filho da esquerda, passa para o irmão da centro esquerda
 					levelRun(node.dad.middle_left);
-				else if(node == node.dad.middle_left)
+				else if(node == node.dad.middle_left) //se for filho da centro esquerda, passa para o irmão da centro direita
 					levelRun(node.dad.middle_right);
-				else if(node == node.dad.middle_right)
+				else if(node == node.dad.middle_right) //se for filho da centro direita, passa para o irmão da direita
 					levelRun(node.dad.right);
-				else if(node == node.dad.right)
+				else if(node == node.dad.right) //se for filho da direita, desce para o próximo nível pela esquerda
 					levelRun(node.dad.left.left);
 			}
 		}
 	}
 	
 	//Questão e)
+	
+	//Percurso em ordem
+	public void inOrder() {
+		inOrder(root);
+	}
+	
+	//Percurso em ordem
+	private void inOrder(Node root) {
+		if (root != null) {
+
+			preOrder(root.left);
+			preOrder(root.middle_left);
+			System.out.print(root + " ");
+			preOrder(root.middle_right);
+			preOrder(root.right);
+			inOrder(root.left);
+			
+		
+		}
+	}
 
 	public void levelRunByLessCost(){
 		System.out.print("Explorando o nó com menor soma de custos parciais: ");
@@ -230,18 +240,14 @@ public class QuadTree{
 		System.out.print("\n");
 	}
 
-	
-
 	private void levelRunByLessCost(Node node){
 		System.out.print(node + " ");
 		heap.clear();
 		
-		if(!node.isObjective() || node != null){
-			if(node.dad == null){
+		if((!node.isObjective()) || (node != null)){
+			if(node.dad == null)
 				levelRunByLessCost(node.left);
-			}
 			else{
-				
 				if (!node.isLeaf()) {
 					node.cost = node.dad.cost + node.cost;
 					node.left.cost = node.left.dad.cost + node.left.cost;
@@ -255,19 +261,16 @@ public class QuadTree{
 					heap.add(node.middle_right);
 	
 					levelRunByLessCost(((Node)heap.peek()).left);
-					
-					
+					levelRunByLessCost(((Node)heap.peek()).middle_left);
+					levelRunByLessCost(((Node)heap.peek()).middle_right);
+					levelRunByLessCost(((Node)heap.peek()).right);
 				}
 			}
-			
 		}
-	
 	}	
 }	
 
-
- class CompareByCost implements Comparator<Element> {
-
+class CompareByCost implements Comparator<Element> {
 	@Override
     public int compare(Element obj, Element obj2){
 		Integer a = ((Node)obj).cost; 
@@ -275,5 +278,4 @@ public class QuadTree{
 
 		return a.compareTo(b);
 	}
-
 }

@@ -1,3 +1,12 @@
+/*
+	TRABALHO 03 - LINGUAGEM DE PROGRAMAÇÃO 2 - 2021.1
+	GABRIEL ESTACIO E THAUANNY RAMOS
+	_________________________________________________
+	
+	OBSERVAÇÕES DO ARQUIVO:
+		IMPLEMENTAÇÃO DO TIPO NODE
+ */
+
 package trabalho03;
 
 import java.util.Random;

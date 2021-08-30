@@ -1,3 +1,12 @@
+/*
+	TRABALHO 03 - LINGUAGEM DE PROGRAMAÇÃO 2 - 2021.1
+	GABRIEL ESTACIO E THAUANNY RAMOS
+	_________________________________________________
+	
+	OBSERVAÇÕES DO ARQUIVO:
+		IMPLEMENTAÇÃO DO TIPO HEAP (QUESTÃO 2 INCLUSA)
+ */
+
 package trabalho03;
 
 import java.util.ArrayList;

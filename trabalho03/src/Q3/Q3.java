@@ -1,3 +1,12 @@
+/*
+	TRABALHO 03 - LINGUAGEM DE PROGRAMAÇÃO 2 - 2021.1
+	GABRIEL ESTACIO E THAUANNY RAMOS
+	_________________________________________________
+	
+	OBSERVAÇÕES DO ARQUIVO:
+		IMPLEMENTAÇÃO DA QUESTÃO 03
+ */
+
 package trabalho03.src.Q3;
 
 import java.util.Comparator;
