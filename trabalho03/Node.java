@@ -1,3 +1,5 @@
+package trabalho03;
+
 import java.util.Random;
 
 public class Node implements Element{
@@ -12,6 +14,9 @@ public class Node implements Element{
 	public Node middle_right;
 	public Node right;
 
+	public int getCost(){
+		return cost;
+	}
 	public Node(){
 		this.dad = null;
 		this.cost = cost();

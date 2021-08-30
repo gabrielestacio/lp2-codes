@@ -47,15 +47,14 @@ public class HeapComparator<Type extends Element> {
 	public static void main(String[] args) {
 
 		Comparator<Element> cmp = new CompararValores();
-		HeapComparator<Element> teste = new HeapComparator<>(3, cmp);
+		HeapComparator<Element> teste = new HeapComparator<>(4, cmp);
 		
-		teste.insert(new ImplementElement(60));
 		teste.insert(new ImplementElement(40));
+		teste.insert(new ImplementElement(10));
 		teste.insert(new ImplementElement(30));
 		teste.insert(new ImplementElement(20));
-		teste.insert(new ImplementElement(10));
 		teste.insert(new ImplementElement(50));
-
+		teste.insert(new ImplementElement(60));
 		System.out.println(teste.showValues());
 	}
 }

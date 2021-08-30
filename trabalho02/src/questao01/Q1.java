@@ -29,6 +29,8 @@ public class Q1 {
         System.out.println(teste);
 
         teste.search(2);
+
+        teste.print_levelorder();
         
      
     }

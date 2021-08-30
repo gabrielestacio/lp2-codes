@@ -1,11 +1,22 @@
+package trabalho03;
+
 import java.util.List;
+import java.util.PriorityQueue;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Random;
+
 
 public class QuadTree{
 	private Node root;
 	private int answer;
 	private int cost;
+	
+
+	Comparator<Element> cmp = new CompareByCost();
+
+
+	PriorityQueue<Element> heap = new PriorityQueue<>(cmp);
 	
 	private List<Integer> costs = new ArrayList<Integer>();
 	private List<Node> objectives = new ArrayList<Node>();
@@ -125,6 +136,26 @@ public class QuadTree{
 			insert(generator.nextInt(5000));
 		}
 	}
+
+		//Percurso em ordem
+		public void inOrder() {
+			inOrder(root);
+		}
+	
+		//Percurso em ordem
+		private void inOrder(Node root) {
+			if (root != null) {
+
+				preOrder(root.left);
+				preOrder(root.middle_left);
+				System.out.print(root + " ");
+				preOrder(root.middle_right);
+				preOrder(root.right);
+				inOrder(root.left);
+				
+			
+			}
+		}
 	
 	//Questão c)
 	
@@ -173,8 +204,8 @@ public class QuadTree{
 	}
 	
 	private void levelRun(Node node){
-		System.out.print(node.cost + " ");
-		if(!node.isObjective()){
+		System.out.print(node + " ");
+		if(!node.isObjective() || node != null){
 			if(node.dad == null){
 				levelRun(node.left);
 			}
@@ -192,5 +223,57 @@ public class QuadTree{
 	}
 	
 	//Questão e)
+
+	public void levelRunByLessCost(){
+		System.out.print("Explorando o nó com menor soma de custos parciais: ");
+		levelRunByLessCost(root);
+		System.out.print("\n");
+	}
+
 	
+
+	private void levelRunByLessCost(Node node){
+		System.out.print(node + " ");
+		heap.clear();
+		
+		if(!node.isObjective() || node != null){
+			if(node.dad == null){
+				levelRunByLessCost(node.left);
+			}
+			else{
+				
+				if (!node.isLeaf()) {
+					node.cost = node.dad.cost + node.cost;
+					node.left.cost = node.left.dad.cost + node.left.cost;
+					node.right.cost = node.right.dad.cost + node.right.cost;
+					node.middle_left.cost = node.middle_left.dad.cost + node.middle_left.cost;
+					node.middle_right.cost = node.middle_right.dad.cost + node.middle_right.cost;
+					heap.add(node);
+					heap.add(node.left);
+					heap.add(node.right);
+					heap.add(node.middle_left);
+					heap.add(node.middle_right);
+	
+					levelRunByLessCost(((Node)heap.peek()).left);
+					
+					
+				}
+			}
+			
+		}
+	
+	}	
 }	
+
+
+ class CompareByCost implements Comparator<Element> {
+
+	@Override
+    public int compare(Element obj, Element obj2){
+		Integer a = ((Node)obj).cost; 
+		Integer b = ((Node)obj2).cost;
+
+		return a.compareTo(b);
+	}
+
+}

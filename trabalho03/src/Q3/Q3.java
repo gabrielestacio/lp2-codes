@@ -10,7 +10,8 @@ class HeapComparator<Type extends Comparable<Type>> implements Comparator<Type>{
 
 	@Override
     public int compare(Type o1, Type o2) {
-        return  o1.compareTo(o2);
+		int value = o1.compareTo(o2);
+        return  value;
     }
 }
 
@@ -21,11 +22,12 @@ public class Q3 {
 		Comparator<String>  cmp = new HeapComparator<String>();
 		Heap<String> heap = new Heap<String>(cmp);
 		heap.insert("teste");
-		heap.insert("aaaaa");
 		heap.insert("bbbbb");
+		heap.insert("aaaaa");
 		heap.insert("cccc");
 		heap.insert("ddd");
 		heap.insert("ee");
+		
 
 
 		while(heap.size() > 0) {

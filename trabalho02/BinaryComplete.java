@@ -10,6 +10,7 @@
 package trabalho02;
 
 import java.util.LinkedList;
+import java.util.PriorityQueue;
 
 public class BinaryComplete extends BinarySearchTree{
 
@@ -31,6 +32,24 @@ public class BinaryComplete extends BinarySearchTree{
             return insert(root, value);
         }
     }
+
+	public void print_levelorder() {
+		PriorityQueue<Node> q = new PriorityQueue<>();
+		q.add(root);
+	  
+		while(q.size()>0) {
+			Node n = q.remove();
+		  if(n != null) {
+			System.out.println(n.value);
+			Node test = n.value + n.left.value > n.value + n.right.value ?  n.right : n.left;
+			q.add(test);
+			q.add(test.left);
+			q.add(test.right);
+			q.remove(test);
+			
+		  }
+		}
+	  }
 
     private boolean insert(Node node, int value) {
         LinkedList<Node> list = new LinkedList<Node>(); // criação da lista 

@@ -1,3 +1,4 @@
+package trabalho03;
 
 public interface Element extends Comparable<Element> {
 

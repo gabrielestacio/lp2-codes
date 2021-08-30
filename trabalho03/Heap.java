@@ -26,18 +26,20 @@ public class Heap <Type> {
 			}
 		}
 	}
-
+ 
+    
 	private void down(int index) {
 		int p = index;
 		int child = ((index + 1) * 2) - 1;
-		if (child + 1 < size) {
-			if (comparator.compare(elements.get(child+1), elements.get(p) ) > 0) {
-				swap(p, child + 1);
-				down(child + 1);
+		if (child  < size) {
+			if (child + 1 < size && comparator.compare(elements.get(child+1), elements.get(p) ) > 0) {
+				child += 1;
+				
 			}
-		} else if (child < size) {
+		
 			if (comparator.compare(elements.get(child), elements.get(p) ) > 0) {
 				swap(p, child);
+				down(child + 1);
 			}
 		}
 	}
