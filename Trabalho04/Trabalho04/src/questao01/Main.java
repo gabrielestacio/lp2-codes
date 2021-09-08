@@ -1,4 +1,4 @@
-package questao01;
+package Trabalho04.src.questao01;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;

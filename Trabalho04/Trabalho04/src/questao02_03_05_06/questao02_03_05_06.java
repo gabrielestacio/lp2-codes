@@ -1,4 +1,4 @@
-package questao02_03_05_06;
+package Trabalho04.src.questao02_03_05_06;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
